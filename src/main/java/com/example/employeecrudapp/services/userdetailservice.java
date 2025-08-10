@@ -2,14 +2,14 @@ package com.example.employeecrudapp.services;
 
 import com.example.employeecrudapp.entity.Userdetail;
 import com.example.employeecrudapp.entity.employee;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.example.employeecrudapp.repositories.userrepo;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
 public class userdetailservice implements UserDetailsService {
-    private  userrepo service;
+    private userrepo service;
 
     public userdetailservice(userrepo service) {
         this.service = service;
