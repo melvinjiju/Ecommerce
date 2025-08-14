@@ -1,9 +1,6 @@
 package com.example.employeecrudapp.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class cart {
@@ -11,15 +8,19 @@ public class cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     int id;
-    int userid;
-    int itemid;
+    @ManyToOne
+    @JoinColumn(name="empid")
+    employee emp;
+    @ManyToOne
+    @JoinColumn(name="itemid")
+    item item;
     int quantity;
     public cart(){};
 
-    public cart(int userid, int itemid, int quantity) {
-        this.id = id;
-        this.userid = userid;
-        this.itemid = itemid;
+    public cart( employee emp, item item, int quantity) {
+
+        this.emp = emp;
+        this.item = item;
         this.quantity = quantity;
     }
 
@@ -31,20 +32,20 @@ public class cart {
         this.id = id;
     }
 
-    public int getUserid() {
-        return userid;
+    public employee getEmp() {
+        return emp;
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public void setEmp(employee emp) {
+        this.emp = emp;
     }
 
-    public int getItemid() {
-        return itemid;
+    public item getItem() {
+        return item;
     }
 
-    public void setItemid(int itemid) {
-        this.itemid = itemid;
+    public void setItem(item item) {
+        this.item = item;
     }
 
     public int getQuantity() {
@@ -55,3 +56,4 @@ public class cart {
         this.quantity = quantity;
     }
 }
+

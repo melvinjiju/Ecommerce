@@ -96,4 +96,10 @@ public class empcontroller {
     public List<usercart> viewcart(){
         return helper.viewshoppingitem();
     }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/viewallcart")
+    public List<admincart> viewallcart(){
+        return helper.viewallcart();
+    }
 }
